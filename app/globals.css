@@ -97,6 +97,11 @@
   box-shadow: none;
 }
 
+.cl-avatarBox {
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+}
+
 .cl-internal-w8uam1 {
   gap: 1rem;
 }
