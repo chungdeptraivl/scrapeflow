@@ -16,7 +16,7 @@ import React, { useState } from "react";
 
 const routes = [
   {
-    href: "",
+    href: "/",
     label: "Home",
     icon: HomeIcon,
   },
@@ -39,10 +39,13 @@ const routes = [
 
 const DestopSidebar = () => {
   const pathName = usePathname();
+
   const activeRoute =
     routes.find(
-      (route) => route.href.length > 0 && pathName.includes(route.href)
+      (route) =>
+        pathName === route.href || pathName.startsWith(`/${route.href}`)
     ) || routes[0];
+
   return (
     <div className="hidden relative md:block min-w-[280px] max-w-[280px] h-screen overflow-hidden w-full bg-primary/5 dark:bg-secondary/30 dark:text-foreground text-muted-foreground border-r-2 border-separate">
       <div className="flex items-center justify-center gap-2 border-b-[1px] border-separate p-4">
@@ -73,9 +76,11 @@ const DestopSidebar = () => {
 export const MobileSidebar = () => {
   const pathName = usePathname();
   const [isOpen, setOpen] = useState<boolean>(false);
+
   const activeRoute =
     routes.find(
-      (route) => route.href.length > 0 && pathName.includes(route.href)
+      (route) =>
+        pathName === route.href || pathName.startsWith(`/${route.href}`)
     ) || routes[0];
 
   return (
